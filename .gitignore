@@ -48,6 +48,7 @@ models/saved_models/*.pkl
 models/saved_models/*.joblib
 models/saved_models/*.h5
 !models/saved_models/.gitkeep
+!models/saved_models/*.png
 
 *.png
 *.jpg
