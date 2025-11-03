@@ -1,4 +1,4 @@
-# A Comparative Machine Learning Study
+# A Comparative Machine Learning Evaluation
 
 A comprehensive machine learning pipeline that compares multiple classification algorithms for predicting UFC fight outcomes. This project demonstrates end-to-end ML workflow including exploratory data analysis, feature engineering, model training, and hyperparameter optimization.
 
