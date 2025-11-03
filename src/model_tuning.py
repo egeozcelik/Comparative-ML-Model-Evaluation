@@ -169,8 +169,6 @@ class ModelTuning:
             print("  ✗ Model doesn't have feature_importances_ attribute")
             return
         
-        print(f"\n  ◦ Generating feature importance plot...")
-        
         feature_imp = pd.DataFrame({
             'Feature': self.X_train.columns,
             'Importance': self.best_model.feature_importances_
@@ -185,8 +183,9 @@ class ModelTuning:
         
         if save_path:
             plt.savefig(save_path, dpi=300, bbox_inches='tight')
+            print(f"\n  ◦ Feature importance plot saved: {save_path}")
         
-        plt.show()
+        plt.close()
     
     def save_model(self, model_path, scaler_path, columns_path):
         """

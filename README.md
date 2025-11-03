@@ -8,9 +8,19 @@ This project presents a systematic comparison of machine learning models for bin
 
 The primary objective is not merely to predict fight outcomes, but to analyze and compare the performance characteristics of various classification algorithms under controlled conditions. Each model is evaluated using consistent metrics, enabling direct performance comparison and identification of the optimal approach for this classification problem.
 
-### Key Components
+### Dataset
 
-**Dataset**: UFC fighter statistics and fight results from Kaggle's comprehensive UFC dataset, containing fighter physical attributes, career statistics, and fight-specific metrics.
+**Source**: [UFC Fighters & Fight Data - Kaggle](https://www.kaggle.com/datasets/rajeevw/ufcdata)
+
+The dataset contains comprehensive UFC fighter statistics and historical fight results, including:
+- Fighter physical attributes (height, weight, reach, age)
+- Career statistics (wins, losses, knockouts, submissions)
+- Performance metrics (strikes per minute, takedown accuracy, defense statistics)
+- Fight-specific information (weight class, title bout status)
+
+Total samples: 7,439 fights with 95 original features before preprocessing.
+
+### Key Components
 
 **Models Evaluated**:
 - Logistic Regression
@@ -53,7 +63,7 @@ The primary objective is not merely to predict fight outcomes, but to analyze an
 
 ### Prerequisites
 
-Note that Python 3.13 is not compatible with some dependencies. All results in this documentation were generated using Python 3.11.
+Python 3.11 is required for this project. Note that Python 3.13 is not compatible with some dependencies. All results in this documentation were generated using Python 3.11.
 
 ### Quick Setup
 
@@ -364,6 +374,31 @@ The model shows bias toward the majority class (Red corner) with higher recall (
 
 **Test Set Performance**: Final test accuracy of 0.806 and AUC of 0.886 demonstrate strong generalization. The close alignment between cross-validation and test performance (0.804 vs 0.806 accuracy) indicates minimal overfitting and reliable model stability.
 
+### Feature Importance Analysis
+
+![Feature Importance](models/feature_importance.png)
+
+The feature importance analysis reveals which fighter attributes most strongly influence fight predictions:
+
+**Top Predictive Features**:
+- **overall_score_diff**: The composite performance differential (combining striking, strike defense, and takedown defense) emerges as the single most important predictor, validating the effectiveness of engineered aggregate metrics
+- **wins_total_diff**: Historical win differential between fighters serves as a strong proxy for skill level and experience advantage
+- **losses_total_diff**: Complementary to wins, this captures each fighter's vulnerability history
+- **r_power_striking_score & b_power_striking_score**: The product of striking volume and accuracy for both corners indicates offensive threat level
+
+**Physical Attributes**:
+- **age_diff, height_diff, weight_diff**: Physical differentials show moderate importance, suggesting that while size and age matter, technical skills and performance history dominate predictions
+- **r_body_mass_index & b_body_mass_index**: BMI features provide additional context about fighter body composition within weight classes
+
+**Performance Metrics**:
+- **SLpM_total_diff, td_acc_total_diff**: Striking and takedown differentials capture fighting style effectiveness
+- **str_def_total_diff, td_def_total_diff**: Defensive capabilities significantly impact fight outcomes
+
+**Comparative Features**:
+- Binary indicators (is_r_younger, is_r_taller, is_r_more_experienced) show lower individual importance but contribute collectively to model decisions
+
+The dominance of difference features over absolute statistics confirms that relative advantages between fighters matter more than individual capabilities in isolation. This insight validates the feature engineering strategy of computing differentials rather than using raw fighter statistics.
+
 ---
 
 ## Results Summary
@@ -385,3 +420,21 @@ The model shows bias toward the majority class (Red corner) with higher recall (
 
 ---
 
+## Future Improvements
+
+- Implement SMOTE or other sampling techniques to address class imbalance
+- Explore ensemble methods combining multiple top-performing models
+- Conduct feature importance analysis using SHAP values for model interpretability
+- Investigate temporal features (fighter momentum, recent performance trends)
+- Expand hyperparameter search space and use Bayesian optimization
+- Develop prediction confidence intervals for practical deployment
+
+---
+
+## License
+
+This project is open source and available for educational purposes.
+
+## Acknowledgments
+
+Dataset sourced from Kaggle's UFC dataset. This project is for educational and research purposes only.

@@ -108,8 +108,11 @@ class MLPipeline:
         if self.tuner is None:
             raise ValueError("Tune model first before saving artifacts.")
         
-        self.tuner.plot_feature_importance(top_n=20)
+        # Save feature importance plot
+        plot_path = self.config['MODELS_DIR'] / "feature_importance.png"
+        self.tuner.plot_feature_importance(top_n=20, save_path=plot_path)
         
+        # Save model artifacts
         self.tuner.save_model(
             model_path=self.config['SAVED_MODELS_DIR'] / "best_model.pkl",
             scaler_path=self.config['SAVED_MODELS_DIR'] / "scaler.pkl",
@@ -194,7 +197,7 @@ def get_config():
 
 
 if __name__ == "__main__":
-    print("A Comparative Machine Learning Study")
+    print("UFC Fight Prediction Pipeline")
     print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n")
     
     config = get_config()
