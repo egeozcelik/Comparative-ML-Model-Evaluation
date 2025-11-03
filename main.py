@@ -23,7 +23,8 @@ class MLPipeline:
             self.config['RAW_DATA_DIR'],
             self.config['PROCESSED_DATA_DIR'],
             self.config['MODELS_DIR'],
-            self.config['SAVED_MODELS_DIR']
+            self.config['SAVED_MODELS_DIR'],
+            self.config['ASSETS_DIR']
         ]:
             directory.mkdir(parents=True, exist_ok=True)
     
@@ -109,7 +110,7 @@ class MLPipeline:
             raise ValueError("Tune model first before saving artifacts.")
         
         # Save feature importance plot
-        plot_path = self.config['MODELS_DIR'] / "feature_importance.png"
+        plot_path = self.config['ASSETS_DIR'] / "feature_importance.png"
         self.tuner.plot_feature_importance(top_n=20, save_path=plot_path)
         
         # Save model artifacts
@@ -145,6 +146,7 @@ def get_config():
         'RAW_DATA_DIR': DATA_DIR / "raw",
         'PROCESSED_DATA_DIR': DATA_DIR / "processed",
         'MODELS_DIR': ROOT_DIR / "models",
+        'ASSETS_DIR': ROOT_DIR / "assets",
         'SAVED_MODELS_DIR': ROOT_DIR / "models" / "saved_models",
         
         'DATASET_NAME': "large_dataset.csv",
