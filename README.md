@@ -376,7 +376,7 @@ The model shows bias toward the majority class (Red corner) with higher recall (
 
 ### Feature Importance Analysis
 
-![Feature Importance](images/feature_importance.png)
+![Feature Importance](~/images/feature_importance.png)
 
 The feature importance analysis reveals which fighter attributes most strongly influence fight predictions:
 
