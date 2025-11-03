@@ -135,7 +135,7 @@ This modular approach allows you to:
 
 ## Pipeline Walkthrough
 
-### Stage 1: Exploratory Data Analysis
+### Exploratory Data Analysis (EDA)
 
 ```
 → Stage 1: Exploratory Data Analysis
@@ -184,7 +184,7 @@ The EDA stage performs initial data inspection and cleaning:
 
 After cleaning, the dataset contains 53 features ready for feature engineering.
 
-### Stage 2: Feature Engineering
+### Feature Engineering
 
 ```
 → Stage 2: Feature Engineering
@@ -259,7 +259,7 @@ This approach reduces feature dimensionality while highlighting competitive adva
 
 The final dataset contains 60 features engineered for optimal predictive power.
 
-### Stage 3: Baseline Model Training
+### Model Training (Baseline)
 
 ```
 → Stage 3: Baseline Model Training
@@ -309,7 +309,7 @@ Eight classification algorithms are trained and evaluated under identical condit
 
 CatBoost is selected for hyperparameter tuning based on its superior baseline performance.
 
-### Stage 4: Hyperparameter Tuning
+### Hyperparameter Tuning (CatBoost)
 
 ```
 → Stage 4: Hyperparameter Tuning
@@ -419,21 +419,6 @@ The dominance of difference features over absolute statistics confirms that rela
 - Class imbalance remains a challenge, with the model favoring the majority class (Red corner)
 
 ---
-
-## Future Improvements
-
-- Implement SMOTE or other sampling techniques to address class imbalance
-- Explore ensemble methods combining multiple top-performing models
-- Conduct feature importance analysis using SHAP values for model interpretability
-- Investigate temporal features (fighter momentum, recent performance trends)
-- Expand hyperparameter search space and use Bayesian optimization
-- Develop prediction confidence intervals for practical deployment
-
----
-
-## License
-
-This project is open source and available for educational purposes.
 
 ## Acknowledgments
 
