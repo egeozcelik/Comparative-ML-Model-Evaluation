@@ -385,21 +385,3 @@ The model shows bias toward the majority class (Red corner) with higher recall (
 
 ---
 
-## Future Improvements
-
-- Implement SMOTE or other sampling techniques to address class imbalance
-- Explore ensemble methods combining multiple top-performing models
-- Conduct feature importance analysis using SHAP values for model interpretability
-- Investigate temporal features (fighter momentum, recent performance trends)
-- Expand hyperparameter search space and use Bayesian optimization
-- Develop prediction confidence intervals for practical deployment
-
----
-
-## License
-
-This project is open source and available for educational purposes.
-
-## Acknowledgments
-
-Dataset sourced from Kaggle's UFC dataset. This project is for educational and research purposes only.
